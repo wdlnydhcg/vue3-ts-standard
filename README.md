@@ -2,10 +2,10 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 16:39:46
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-13 16:39:55
+ * @LastEditTime: 2022-01-13 16:52:13
  * @Description: 
 -->
-# vue3-ts-standard
+# vue3-ts-standard11
 
 技术栈 vue3 + typescript + webpack5
 ## Project setup
