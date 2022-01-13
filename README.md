@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-01-13 16:52:13
  * @Description: 
 -->
-# vue3-ts-standard11
+# vue3-ts-standard
 
 技术栈 vue3 + typescript + webpack5
 ## Project setup
