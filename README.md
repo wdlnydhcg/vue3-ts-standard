@@ -1,4 +1,11 @@
-# 慕课乐高标准模版
+<!--
+ * @Author: MrAlenZhong
+ * @Date: 2022-01-13 15:30:21
+ * @LastEditors: MrAlenZhong
+ * @LastEditTime: 2022-01-13 15:45:47
+ * @Description: 
+-->
+# nh vue3+ts标准模版版
 
 ## 特性
 * 开箱即用

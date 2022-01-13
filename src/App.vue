@@ -2,11 +2,11 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 15:30:21
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-13 15:41:53
+ * @LastEditTime: 2022-01-13 15:45:30
  * @Description: 
 -->
 <template>
-  <h1>vue3+ts标准模版</h1>
+  <h1>nh vue3+ts标准模版</h1>
   <ul>
     <li>开箱即用</li>
     <li>typescript</li>
