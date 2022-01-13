@@ -1,5 +1,12 @@
+<!--
+ * @Author: MrAlenZhong
+ * @Date: 2022-01-13 15:30:21
+ * @LastEditors: MrAlenZhong
+ * @LastEditTime: 2022-01-13 15:41:53
+ * @Description: 
+-->
 <template>
-  <h1>慕课乐高标准模版</h1>
+  <h1>vue3+ts标准模版</h1>
   <ul>
     <li>开箱即用</li>
     <li>typescript</li>
