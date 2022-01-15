@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 20:29:16
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-15 14:17:56
+ * @LastEditTime: 2022-01-15 14:32:22
  * @Description:
  */
 import type { AppRouteModule } from "@/router/types";

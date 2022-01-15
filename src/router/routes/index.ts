@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-14 15:25:54
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-15 14:18:14
+ * @LastEditTime: 2022-01-15 14:32:19
  * @Description:
  */
 import type { AppRouteRecordRaw, AppRouteModule } from "@/router/types";

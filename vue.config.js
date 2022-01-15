@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-15 13:40:39
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-15 14:18:32
+ * @LastEditTime: 2022-01-15 14:32:45
  * @Description:
  */
 const { defineConfig } = require("@vue/cli-service");

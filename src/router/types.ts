@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 19:59:20
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-15 13:46:28
+ * @LastEditTime: 2022-01-15 14:32:16
  * @Description:
  */
 import type { RouteRecordRaw, RouteMeta } from "vue-router";
