@@ -1,16 +1,10 @@
-<!--
- * @Author: MrAlenZhong
- * @Date: 2022-01-13 16:20:08
- * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-13 16:23:21
- * @Description: 
--->
 <template>
-  <nav>
+
+  <!-- <nav>
     <router-link to="/">Home</router-link>|
     <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  </nav> -->
+  <RouterView />
 </template>
 
 <style>
