@@ -1,13 +1,25 @@
+<!--
+ * @Author: MrAlenZhong
+ * @Date: 2022-01-15 14:28:03
+ * @LastEditors: MrAlenZhong
+ * @LastEditTime: 2022-01-16 17:35:52
+ * @Description: 
+-->
 <template>
   <!-- <nav>
     <router-link to="/">Home</router-link>|
     <router-link to="/about">About</router-link>
   </nav> -->
-  <RouterView />
+  <AppProvider>
+    <RouterView />
+  </AppProvider>
 </template>
-
+<script lang="ts" setup>
+  import { AppProvider } from "@/components/Application";
+</script>
 <style>
   #app {
+    height: 100%;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

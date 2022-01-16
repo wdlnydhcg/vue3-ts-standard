@@ -1,38 +1,39 @@
 <template>
-  <layout>
-    <layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-      <div class="logo"></div>
-      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-        <a-menu-item key="1">
-          <user-outlined />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <video-camera-outlined />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <upload-outlined />
-          <span>nav 3</span>
-        </a-menu-item>
-      </a-menu>
-    </layout-sider>
-    <layout>
-      <layout-header style="background: #fff; padding: 0">
-        <menu-unfold-outlined
-          v-if="collapsed"
-          class="trigger"
-          @click="() => (collapsed = !collapsed)"
-        />
-        <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
-      </layout-header>
-      <layout-content
+  <a-layout :class="prefixCls">
+    <a-layout-header style="background: #fff; padding: 0">
+      <menu-unfold-outlined
+        v-if="collapsed"
+        class="trigger"
+        @click="() => (collapsed = !collapsed)"
+      />
+      <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+    </a-layout-header>
+
+    <a-layout>
+      <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+        <div class="logo"></div>
+        <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+          <a-menu-item key="1">
+            <user-outlined />
+            <span>nav 1</span>
+          </a-menu-item>
+          <a-menu-item key="2">
+            <video-camera-outlined />
+            <span>nav 2</span>
+          </a-menu-item>
+          <a-menu-item key="3">
+            <upload-outlined />
+            <span>nav 3</span>
+          </a-menu-item>
+        </a-menu>
+      </a-layout-sider>
+      <a-layout-content
         :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
       >
         Content
-      </layout-content>
-    </layout>
-  </layout>
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
 <script lang="ts">
   import {
@@ -42,23 +43,9 @@
     MenuUnfoldOutlined,
     MenuFoldOutlined,
   } from "@ant-design/icons-vue";
-  import {
-    Layout,
-    // Menu,
-    // MenuItem,
-    LayoutSider,
-    LayoutHeader,
-    LayoutContent,
-  } from "ant-design-vue";
   import { defineComponent, ref } from "vue";
   export default defineComponent({
     components: {
-      Layout,
-      // Menu,
-      // MenuItem,
-      LayoutSider,
-      LayoutHeader,
-      LayoutContent,
       UserOutlined,
       VideoCameraOutlined,
       UploadOutlined,
@@ -69,6 +56,7 @@
       return {
         selectedKeys: ref<string[]>(["1"]),
         collapsed: ref<boolean>(false),
+        prefixCls: "layout-main-wrap-content",
       };
     },
   });
