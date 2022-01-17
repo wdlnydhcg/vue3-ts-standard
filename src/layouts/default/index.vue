@@ -1,5 +1,12 @@
+<!--
+ * @Author: MrAlenZhong
+ * @Date: 2022-01-15 14:28:03
+ * @LastEditors: MrAlenZhong
+ * @LastEditTime: 2022-01-17 17:20:10
+ * @Description: 
+-->
 <template>
-  <a-layout :class="prefixCls">
+  <!-- <a-layout :class="prefixCls">
     <a-layout-header style="background: #fff; padding: 0">
       <menu-unfold-outlined
         v-if="collapsed"
@@ -8,7 +15,6 @@
       />
       <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
     </a-layout-header>
-
     <a-layout>
       <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
         <div class="logo"></div>
@@ -33,30 +39,42 @@
         Content
       </a-layout-content>
     </a-layout>
-  </a-layout>
+  </a-layout> -->
+  <Layout>
+    <LayoutSideBar />
+  </Layout>
 </template>
 <script lang="ts">
-  import {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-  } from "@ant-design/icons-vue";
   import { defineComponent, ref } from "vue";
+  import { Layout } from "ant-design-vue";
+  // import {
+  //   UserOutlined,
+  //   VideoCameraOutlined,
+  //   UploadOutlined,
+  //   MenuUnfoldOutlined,
+  //   MenuFoldOutlined,
+  // } from "@ant-design/icons-vue";
+
+  import { useDesign } from "@/hooks/web/useDesign";
+  import LayoutSideBar from "./sider/index.vue";
+
   export default defineComponent({
     components: {
-      UserOutlined,
-      VideoCameraOutlined,
-      UploadOutlined,
-      MenuUnfoldOutlined,
-      MenuFoldOutlined,
+      // UserOutlined,
+      // VideoCameraOutlined,
+      // UploadOutlined,
+      // MenuUnfoldOutlined,
+      // MenuFoldOutlined,
+      LayoutSideBar,
+      Layout,
     },
     setup() {
+      const { prefixCls } = useDesign("default-layout");
       return {
         selectedKeys: ref<string[]>(["1"]),
         collapsed: ref<boolean>(false),
-        prefixCls: "layout-main-wrap-content",
+        // prefixCls: "layout-main-wrap-content",
+        prefixCls,
       };
     },
   });

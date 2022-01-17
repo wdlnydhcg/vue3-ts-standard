@@ -2,11 +2,11 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 16:06:32
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-16 16:25:27
+ * @LastEditTime: 2022-01-17 16:07:39
  * @Description: 
 -->
 <script lang="ts">
-  import { defineComponent, toRefs } from "vue";
+  import { defineComponent, toRefs, ref } from "vue";
   import { prefixCls } from "@/settings/designSetting";
   import { createAppProviderContext } from "./useAppContext";
   const props = {
@@ -21,7 +21,8 @@
     props,
     setup(props, { slots }) {
       const { prefixCls } = toRefs(props);
-      createAppProviderContext({ prefixCls });
+      const isMobile = ref(false);
+      createAppProviderContext({ prefixCls, isMobile });
       return () => slots.default?.();
     },
   });

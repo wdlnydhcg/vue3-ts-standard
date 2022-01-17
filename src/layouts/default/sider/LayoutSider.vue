@@ -1,19 +1,31 @@
 <!--
  * @Author: MrAlenZhong
- * @Date: 2022-01-16 20:11:06
+ * @Date: 2022-01-16 22:27:19
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-17 17:20:55
+ * @LastEditTime: 2022-01-17 17:14:46
  * @Description: 
 -->
 <template>
-  <Sider />
+  <Sider>
+    <LayoutMenu />
+  </Sider>
 </template>
 <script lang="ts">
-  import { defineComponent } from "vue";
-  import Sider from "./LayoutSider.vue";
+  import {
+    defineComponent,
+    // nextTick,
+    // onMounted,
+    // reactive,
+    // ref,
+    // watchEffect,
+    // computed,
+    // toRefs,
+  } from "vue";
+  import { Layout } from "ant-design-vue";
+  import LayoutMenu from "../menu/index.vue";
   export default defineComponent({
-    name: "SiderWrapper",
-    components: { Sider },
+    name: "LayoutSider",
+    components: { Sider: Layout.Sider, LayoutMenu },
     setup() {
       // 页面初始化时调用
       // nextTick(() => {})

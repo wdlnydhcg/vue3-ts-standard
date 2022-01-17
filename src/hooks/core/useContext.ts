@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 16:18:11
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-16 16:25:03
+ * @LastEditTime: 2022-01-17 15:12:52
  * @Description:
  */
 import {
@@ -14,12 +14,14 @@ import {
   // defineComponent,
   UnwrapRef,
 } from "vue";
-
+// 注入类型
 export interface CreateContextOptions {
   readonly?: boolean;
   createProvider?: boolean;
   native?: boolean;
 }
+
+// 创建 Provider 和响应式数据绑定方法 (provider)
 export function createContext<T>(
   context: any,
   key: InjectionKey<T> = Symbol(),
@@ -43,6 +45,7 @@ type ShallowUnwrap<T> = {
 export function useContext<T>(key: InjectionKey<T>, native?: boolean): T;
 export function useContext<T>(key: InjectionKey<T>, defaultValue?: any, native?: boolean): T;
 
+//使用 Provider 传递的属性 方法（inject）
 export function useContext<T>(
   key: InjectionKey<T> = Symbol(),
   defaultValue?: any
