@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 16:04:46
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-16 17:24:23
+ * @LastEditTime: 2022-01-19 17:13:06
  * @Description:
  */
 import type { App, Plugin } from "vue";
@@ -16,3 +16,5 @@ export const withInstall = <T>(component: T, alias?: string) => {
   };
   return component as T & Plugin;
 };
+
+export const noop = () => {};

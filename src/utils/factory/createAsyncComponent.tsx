@@ -1,0 +1,52 @@
+/*
+ * @Author: MrAlenZhong
+ * @Date: 2022-01-19 17:11:13
+ * @LastEditors: MrAlenZhong
+ * @LastEditTime: 2022-01-19 17:13:31
+ * @Description:
+ */
+import {
+  defineAsyncComponent,
+  // FunctionalComponent, CSSProperties
+} from "vue";
+import { Spin } from "ant-design-vue";
+import { noop } from "@/utils";
+interface Options {
+  size?: "default" | "small" | "large";
+  delay?: number;
+  timeout?: number;
+  loading?: boolean;
+  retry?: boolean;
+}
+
+export function createAsyncComponent(loader: Fn, options: Options = {}) {
+  const { size = "small", delay = 100, timeout = 30000, loading = false, retry = true } = options;
+  return defineAsyncComponent({
+    loader,
+    loadingComponent: loading ? <Spin spinning={true} size={size} /> : undefined,
+    // The error component will be displayed if a timeout is
+    // provided and exceeded. Default: Infinity.
+    // TODO
+    timeout,
+    // errorComponent
+    // Defining if component is suspensible. Default: true.
+    // suspensible: false,
+    delay,
+    /**
+     *
+     * @param {*} error Error message object
+     * @param {*} retry A function that indicating whether the async component should retry when the loader promise rejects
+     * @param {*} fail  End of failure
+     * @param {*} attempts Maximum allowed retries number
+     */
+    onError: !retry
+      ? noop
+      : (error, retry, fail, attempts) => {
+          if (error.message.match(/fetch/) && attempts <= 3) {
+            retry();
+          } else {
+            fail();
+          }
+        },
+  });
+}

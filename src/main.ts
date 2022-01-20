@@ -2,9 +2,10 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 16:43:46
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-16 14:40:34
+ * @LastEditTime: 2022-01-17 23:17:57
  * @Description:
  */
+import "./design/index.less";
 import { createApp } from "vue";
 import App from "./App.vue";
 import Antd from "ant-design-vue/es";

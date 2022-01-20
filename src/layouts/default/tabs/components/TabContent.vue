@@ -1,22 +1,20 @@
 <!--
  * @Author: MrAlenZhong
- * @Date: 2022-01-15 13:46:11
+ * @Date: 2022-01-18 19:14:55
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-17 19:37:56
+ * @LastEditTime: 2022-01-18 19:14:58
  * @Description: 
 -->
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/images/nahang.png" />
-    <h1>this Home View Page</h1>
-  </div>
+  <div></div>
 </template>
-
 <script lang="ts">
   import { defineComponent } from "vue";
-
   export default defineComponent({
-    name: "HomeView",
+    name: "TabContent",
     components: {},
+    setup() {
+      return {};
+    },
   });
 </script>

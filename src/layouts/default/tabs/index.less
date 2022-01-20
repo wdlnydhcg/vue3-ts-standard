@@ -1,0 +1,85 @@
+@prefix-cls: ~"@{namespace}-multiple-tabs";
+
+.@{prefix-cls} {
+  height: 48px;
+  line-height: 48px;
+  .ant-tabs.ant-tabs-card {
+    height: 48px;
+    .ant-tabs-nav {
+      height: 26px;
+      margin: 23px 0 0px 14px;
+      border: 0;
+      box-shadow: none;
+      .ant-tabs-tab {
+        height: 26px;
+        line-height: 26px;
+        border-bottom: 0;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+        &:hover {
+          .ant-tabs-tab-remove {
+            color: @header-tab-close-color;
+            width: 16px;
+            height: 16px;
+            margin-right: -4px;
+            margin-left: 8px;
+            visibility: visible;
+          }
+        }
+        &.ant-tabs-tab-active {
+          position: relative;
+          padding-left: 18px;
+          background: @header-tab-active-color;
+          border-bottom: 0;
+          border-color: @header-tab-active-color;
+          transition: none;
+          .ant-tabs-tab-btn {
+            color: #fff;
+          }
+          .ant-tabs-tab-remove {
+            width: 16px;
+            margin-right: -4px;
+            margin-left: 8px;
+            visibility: visible;
+            color: #fff;
+          }
+        }
+        .ant-tabs-tab-remove {
+          width: 0;
+          margin: 0;
+          padding: 0;
+          visibility: hidden;
+          transform: all 0.2s;
+          border-radius: 50%;
+          &:hover {
+            background: #3498db;
+          }
+          .anticon-close {
+            float: left;
+            text-indent: 2px;
+          }
+        }
+      }
+      .ant-tabs-nav-wrap {
+        text-align: left;
+        .ant-tabs-nav {
+          & > div {
+            padding: 0 10px;
+          }
+        }
+      }
+      .ant-tabs-nav-operations {
+        .ant-tabs-nav-more {
+          padding-top: 0px;
+          color: #fff;
+          font-size: 20px;
+          position: relative;
+          .anticon-ellipsis {
+            top: 0;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

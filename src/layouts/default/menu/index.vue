@@ -2,12 +2,13 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 22:17:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-17 17:20:27
+ * @LastEditTime: 2022-01-20 10:30:18
  * @Description: 
 -->
 <script lang="tsx">
   import { defineComponent } from "vue";
   import { AppLogo } from "@/components/Application";
+  import { SimpleMenu } from "@/components/SimpleMenu";
   export default defineComponent({
     name: "LayoutMenu",
     // props: {},
@@ -15,11 +16,15 @@
       function renderHeader() {
         return <AppLogo />;
       }
+      function renderMenu() {
+        return <SimpleMenu />;
+      }
+      // function renderMenu() {}
       return () => {
         return (
           <>
-            <h2>this is menu page</h2>
             {renderHeader()}
+            {renderMenu()}
           </>
         );
       };

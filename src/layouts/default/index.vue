@@ -2,103 +2,60 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-15 14:28:03
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-17 17:20:10
+ * @LastEditTime: 2022-01-18 14:54:24
  * @Description: 
 -->
 <template>
-  <!-- <a-layout :class="prefixCls">
-    <a-layout-header style="background: #fff; padding: 0">
-      <menu-unfold-outlined
-        v-if="collapsed"
-        class="trigger"
-        @click="() => (collapsed = !collapsed)"
-      />
-      <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
-    </a-layout-header>
-    <a-layout>
-      <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-        <div class="logo"></div>
-        <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-          <a-menu-item key="1">
-            <user-outlined />
-            <span>nav 1</span>
-          </a-menu-item>
-          <a-menu-item key="2">
-            <video-camera-outlined />
-            <span>nav 2</span>
-          </a-menu-item>
-          <a-menu-item key="3">
-            <upload-outlined />
-            <span>nav 3</span>
-          </a-menu-item>
-        </a-menu>
-      </a-layout-sider>
-      <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
-      >
-        Content
-      </a-layout-content>
-    </a-layout>
-  </a-layout> -->
-  <Layout>
-    <LayoutSideBar />
+  <Layout :class="prefixCls">
+    <!-- <LayoutFeatures /> -->
+    <Layout :class="layoutClass">
+      <LayoutSideBar />
+      <Layout :class="`${prefixCls}-main`">
+        <LayoutHeader />
+        <LayoutContent />
+        <!-- <LayoutMultipleHeader />
+        <LayoutFooter /> -->
+      </Layout>
+    </Layout>
   </Layout>
 </template>
 <script lang="ts">
-  import { defineComponent, ref } from "vue";
+  import { defineComponent, computed } from "vue";
   import { Layout } from "ant-design-vue";
-  // import {
-  //   UserOutlined,
-  //   VideoCameraOutlined,
-  //   UploadOutlined,
-  //   MenuUnfoldOutlined,
-  //   MenuFoldOutlined,
-  // } from "@ant-design/icons-vue";
+
+  import LayoutSideBar from "./sider/index.vue";
+  import LayoutHeader from "./header/index.vue";
+  import LayoutContent from "./content/index.vue";
 
   import { useDesign } from "@/hooks/web/useDesign";
-  import LayoutSideBar from "./sider/index.vue";
 
   export default defineComponent({
     components: {
-      // UserOutlined,
-      // VideoCameraOutlined,
-      // UploadOutlined,
-      // MenuUnfoldOutlined,
-      // MenuFoldOutlined,
-      LayoutSideBar,
       Layout,
+      LayoutSideBar,
+      LayoutHeader,
+      LayoutContent,
     },
     setup() {
       const { prefixCls } = useDesign("default-layout");
+      const layoutClass = computed(() => {
+        let cls: string[] = ["ant-layout", "ant-layout-has-sider"];
+        return cls;
+      });
       return {
-        selectedKeys: ref<string[]>(["1"]),
-        collapsed: ref<boolean>(false),
-        // prefixCls: "layout-main-wrap-content",
         prefixCls,
+        layoutClass,
       };
     },
   });
 </script>
-<style>
-  #components-layout-demo-custom-trigger .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-
-  #components-layout-demo-custom-trigger .trigger:hover {
-    color: #1890ff;
-  }
-
-  #components-layout-demo-custom-trigger .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.3);
-    margin: 16px;
-  }
-
-  .site-layout .site-layout-background {
-    background: #fff;
+<style lang="less" scoped>
+  @prefix-cls:~ '@{namespace}-default-layout';
+  .@{prefix-cls} {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    background-color: #fffccc;
+    flex-direction: column;
   }
 </style>
