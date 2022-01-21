@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-18 16:10:42
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-20 09:48:11
+ * @LastEditTime: 2022-01-21 14:59:00
  * @Description: 
 -->
 <template>
@@ -43,8 +43,12 @@
   .@{prefix-cls} {
     height: 48px;
     line-height: 48px;
+    padding: 0 0px 0 15px;
     display: block;
     cursor: pointer;
+    &:hover {
+      background-color: @header-wrap-hover-color;
+    }
     &__header {
       width: 24px;
       height: 24px;

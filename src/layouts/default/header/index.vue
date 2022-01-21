@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:23:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-18 20:13:06
+ * @LastEditTime: 2022-01-21 15:17:01
  * @Description: 
 -->
 <template>
@@ -14,6 +14,14 @@
         <UserDropdown />
       </div>
       <div :class="`${prefixCls}-left`">
+        <a-button
+          type="primary"
+          :class="`${prefixCls}-left-collapsed-btn`"
+          @click="toggleCollapsed"
+        >
+          <MenuUnfoldOutlined v-if="collapsed" />
+          <MenuFoldOutlined v-else />
+        </a-button>
         <!-- page tabs -->
         <MultipleTabs />
       </div>
@@ -21,8 +29,13 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, computed, CSSProperties } from "vue";
-
+  import { defineComponent, computed, CSSProperties, reactive, toRefs } from "vue";
+  import {
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    // PieChartOutlined,
+    // MailOutlined,
+  } from "@ant-design/icons-vue";
   import MultipleTabs from "../tabs/index.vue";
   import UserDropdown from "./components/UserDropdown.vue";
 
@@ -31,8 +44,21 @@
   const HEADER_HEIGHT = 48;
 
   export default defineComponent({
-    components: { MultipleTabs, UserDropdown },
+    components: {
+      MultipleTabs,
+      UserDropdown,
+      MenuFoldOutlined,
+      MenuUnfoldOutlined,
+      // PieChartOutlined,
+      // MailOutlined,
+    },
     setup() {
+      const state = reactive({
+        collapsed: false,
+        selectedKeys: ["1"],
+        openKeys: ["sub1"],
+        preOpenKeys: ["sub1"],
+      });
       const { prefixCls } = useDesign("layout-multiple-header");
       const getClass = computed(() => {
         return [prefixCls, `${prefixCls}--fixed`];
@@ -47,7 +73,19 @@
           width: `calc(100% - 200px)`,
         };
       });
-      return { prefixCls, getClass, getHeaderHeightStyle, getHeaderWidthStyle };
+      const toggleCollapsed = () => {
+        state.collapsed = !state.collapsed;
+        state.openKeys = state.collapsed ? [] : state.preOpenKeys;
+        console.log("state ", JSON.stringify(state));
+      };
+      return {
+        ...toRefs(state),
+        prefixCls,
+        getClass,
+        getHeaderHeightStyle,
+        getHeaderWidthStyle,
+        toggleCollapsed,
+      };
     },
   });
 </script>
@@ -69,6 +107,20 @@
       position: relative;
       height: 100%;
       overflow: hidden;
+      &-collapsed-btn {
+        float: left;
+        width: 40px;
+        padding: 0;
+        height: 100%;
+        line-height: 48px;
+        cursor: pointer;
+        background: @header-bg-color;
+        border-color: @header-bg-color;
+        box-shadow: none;
+        &:hover {
+          background: @header-wrap-hover-color;
+        }
+      }
     }
     &-right {
       // display: inline-flex;
