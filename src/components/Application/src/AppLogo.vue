@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:40:38
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-19 16:02:04
+ * @LastEditTime: 2022-01-22 15:34:54
  * @Description: 
 -->
 <template>
@@ -14,6 +14,8 @@
 <script lang="ts" setup>
   import { computed } from "vue";
   import { useDesign } from "@/hooks/web/useDesign";
+  import { useMenuSetting } from "@/hooks/setting/useMenuSetting";
+  const { getCollapsed } = useMenuSetting();
   const props = defineProps({
     theme: {
       type: String,
@@ -21,10 +23,12 @@
     },
   });
   const { prefixCls } = useDesign("app-logo");
-  console.log("props ", props);
-  console.log("prefixCls ", prefixCls);
+  console.log("getCollapsed ", getCollapsed);
   const getAppLogoClass = computed(() => [prefixCls, props.theme]);
-  const getAppTitleClass = computed(() => [`${prefixCls}__title`]);
+  const getAppTitleClass = computed(() => [
+    `${prefixCls}__title`,
+    `title_${!getCollapsed.value ? "show" : "hide"}`,
+  ]);
 </script>
 <style lang="less" scoped>
   @prefix-cls: ~"@{namespace}-app-logo";
@@ -46,6 +50,15 @@
       margin-left: 5px;
       font-size: 16px;
       font-weight: bold;
+      transition: all 0.5s;
+      &.title_show {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &.title_hide {
+        display: none;
+      }
     }
   }
 </style>

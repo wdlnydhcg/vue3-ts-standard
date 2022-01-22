@@ -2,10 +2,12 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 15:21:32
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-21 15:50:17
+ * @LastEditTime: 2022-01-22 14:35:15
  * @Description:
  */
-import { computed, unref, ref } from "vue";
+import { computed, unref } from "vue";
+import { useAppStore } from "@/store/modules/app";
+import type { MenuSetting } from "#/config";
 export function useMenuSetting() {
   const appStore = useAppStore();
 
@@ -15,8 +17,15 @@ export function useMenuSetting() {
     appStore.setProjectConfig({ menuSetting });
   }
   function toggleCollapsed() {
+    console.log("getCollapsed  22", unref(getCollapsed));
+
     setMenuSetting({
       collapsed: !unref(getCollapsed),
     });
   }
+  return {
+    getCollapsed,
+    setMenuSetting,
+    toggleCollapsed,
+  };
 }

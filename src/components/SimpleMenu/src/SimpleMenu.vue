@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-20 10:10:15
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-21 14:41:00
+ * @LastEditTime: 2022-01-22 15:00:37
  * @Description: 
 -->
 <template>
@@ -41,7 +41,6 @@
   export default defineComponent({
     components: {
       SubMenu,
-      // PieChartOutlined,
     },
     setup() {
       return {

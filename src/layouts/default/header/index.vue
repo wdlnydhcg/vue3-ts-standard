@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:23:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-21 15:17:01
+ * @LastEditTime: 2022-01-22 15:49:19
  * @Description: 
 -->
 <template>
@@ -19,7 +19,7 @@
           :class="`${prefixCls}-left-collapsed-btn`"
           @click="toggleCollapsed"
         >
-          <MenuUnfoldOutlined v-if="collapsed" />
+          <MenuUnfoldOutlined v-if="getCollapsed" />
           <MenuFoldOutlined v-else />
         </a-button>
         <!-- page tabs -->
@@ -29,16 +29,11 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, computed, CSSProperties, reactive, toRefs } from "vue";
-  import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    // PieChartOutlined,
-    // MailOutlined,
-  } from "@ant-design/icons-vue";
+  import { defineComponent, computed, CSSProperties } from "vue";
+  import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons-vue";
   import MultipleTabs from "../tabs/index.vue";
   import UserDropdown from "./components/UserDropdown.vue";
-
+  import { useMenuSetting } from "@/hooks/setting/useMenuSetting";
   import { useDesign } from "@/hooks/web/useDesign";
 
   const HEADER_HEIGHT = 48;
@@ -49,16 +44,9 @@
       UserDropdown,
       MenuFoldOutlined,
       MenuUnfoldOutlined,
-      // PieChartOutlined,
-      // MailOutlined,
     },
     setup() {
-      const state = reactive({
-        collapsed: false,
-        selectedKeys: ["1"],
-        openKeys: ["sub1"],
-        preOpenKeys: ["sub1"],
-      });
+      const { toggleCollapsed, getCollapsed } = useMenuSetting();
       const { prefixCls } = useDesign("layout-multiple-header");
       const getClass = computed(() => {
         return [prefixCls, `${prefixCls}--fixed`];
@@ -70,21 +58,17 @@
       });
       const getHeaderWidthStyle = computed((): CSSProperties => {
         return {
-          width: `calc(100% - 200px)`,
+          width: `${getCollapsed.value ? "calc(100% - 80px)" : "calc(100% - 200px)"}`,
         };
       });
-      const toggleCollapsed = () => {
-        state.collapsed = !state.collapsed;
-        state.openKeys = state.collapsed ? [] : state.preOpenKeys;
-        console.log("state ", JSON.stringify(state));
-      };
+
       return {
-        ...toRefs(state),
         prefixCls,
         getClass,
         getHeaderHeightStyle,
         getHeaderWidthStyle,
         toggleCollapsed,
+        getCollapsed,
       };
     },
   });

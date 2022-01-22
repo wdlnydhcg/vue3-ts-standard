@@ -2,11 +2,19 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-15 14:28:03
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-15 14:30:43
+ * @LastEditTime: 2022-01-21 16:43:51
  * @Description:
 -->
 
-# vue3-ts-standard-prettier
+# vue3-ts-standard
+
+技术栈
+
+- vue3
+- typescript
+- webpack5
+- pinia
+- vueuse
 
 ## Project setup
 
