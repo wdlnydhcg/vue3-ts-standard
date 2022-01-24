@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-20 10:10:15
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-24 10:35:49
+ * @LastEditTime: 2022-01-24 14:57:03
  * @Description: 
 -->
 <template>
@@ -25,7 +25,6 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from "vue";
-  import type { MenuProps } from "ant-design-vue";
 
   import SubMenu from "./SimpleMenuItem.vue";
   const list = [
@@ -47,8 +46,8 @@
         selectedKeys: [],
         openKeys: [],
       });
-      const handleClick: MenuProps["onClick"] = (menuInfo: any) => {
-        console.log("click ", menuInfo);
+      const handleClick = (message: any) => {
+        console.log("click ", message);
       };
       return {
         ...toRefs(state),
