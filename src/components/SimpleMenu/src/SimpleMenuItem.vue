@@ -2,16 +2,20 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 11:18:17
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-21 14:40:07
+ * @LastEditTime: 2022-01-24 10:24:20
  * @Description: 
 -->
 <template>
   <template v-if="!hasChildren">
-    <a-menu-item>{{ menuItem.name }}</a-menu-item>
+    <a-menu-item :key="menuItem.id">{{ menuItem.name }}</a-menu-item>
   </template>
   <a-sub-menu v-else>
     <template #title>{{ menuItem.name }}</template>
-    <SimpleMenuItem v-for="child in menuItem.children" :menuItem="child" :key="child.id" />
+    <SimpleMenuItem
+      v-for="child in menuItem.children"
+      :menuItem="child"
+      :key="`${child.id}-simpleMenuItem`"
+    />
   </a-sub-menu>
 </template>
 <script lang="ts" setup>
@@ -21,6 +25,11 @@
     menuItem: {
       type: Object as PropType<MenuItemType>,
       default: () => ({}),
+      require: true,
+    },
+    menuKey: {
+      type: String as PropType<string>,
+      default: () => "",
       require: true,
     },
   });

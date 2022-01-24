@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:23:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-22 15:49:19
+ * @LastEditTime: 2022-01-24 08:43:30
  * @Description: 
 -->
 <template>
@@ -19,8 +19,8 @@
           :class="`${prefixCls}-left-collapsed-btn`"
           @click="toggleCollapsed"
         >
-          <MenuUnfoldOutlined v-if="getCollapsed" />
-          <MenuFoldOutlined v-else />
+          <MenuFoldOutlined v-if="!getCollapsed" />
+          <MenuUnfoldOutlined v-else />
         </a-button>
         <!-- page tabs -->
         <MultipleTabs />

@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 15:21:32
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-22 14:35:15
+ * @LastEditTime: 2022-01-24 09:38:24
  * @Description:
  */
 import { computed, unref } from "vue";
@@ -17,8 +17,6 @@ export function useMenuSetting() {
     appStore.setProjectConfig({ menuSetting });
   }
   function toggleCollapsed() {
-    console.log("getCollapsed  22", unref(getCollapsed));
-
     setMenuSetting({
       collapsed: !unref(getCollapsed),
     });

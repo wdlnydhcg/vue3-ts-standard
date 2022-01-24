@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 20:29:31
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-15 14:32:25
+ * @LastEditTime: 2022-01-24 09:07:34
  * @Description:
  */
 import type { AppRouteModule } from "@/router/types";
@@ -22,7 +22,7 @@ const dashboard: AppRouteModule = {
     {
       path: "analysis",
       name: "Analysis",
-      component: () => import("@/views/HomeView.vue"),
+      component: () => import("@/views/Demo/HomeView.vue"),
     },
     // {
     //   path: 'workbench',

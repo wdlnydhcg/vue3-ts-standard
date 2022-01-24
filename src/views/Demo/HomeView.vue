@@ -2,12 +2,12 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-15 13:46:11
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-17 19:37:56
+ * @LastEditTime: 2022-01-24 09:08:08
  * @Description: 
 -->
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/images/nahang.png" />
+    <img alt="Vue logo" src="../../assets/images/nahang.png" />
     <h1>this Home View Page</h1>
   </div>
 </template>

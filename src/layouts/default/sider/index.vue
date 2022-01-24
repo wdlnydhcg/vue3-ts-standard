@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:11:06
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-17 17:20:55
+ * @LastEditTime: 2022-01-24 09:43:05
  * @Description: 
 -->
 <template>
@@ -15,28 +15,7 @@
     name: "SiderWrapper",
     components: { Sider },
     setup() {
-      // 页面初始化时调用
-      // nextTick(() => {})
-      // 组件挂载
-      // onMounted(() => {})
-      //定义data,定义computed
-      //const state = reactive({
-      //text: '',
-      //lowerCaseUsername: computed(() => state.username.toLowerCase())
-      //})
-      //获取组件
-      //const refObj = ref()
-      //定义函数
-      // const testFunc = () => {}
-      //定义监听器watch
-      //watch(xx, (newValue, oldValue) => {});
-      //定义监听器watchEffect
-      //watchEffect(() => {})
-      return {
-        //...toRefs(state),
-        //refObj,
-        //testFunc
-      };
+      return {};
     },
   });
 </script>
