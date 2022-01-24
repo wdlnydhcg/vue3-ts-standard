@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:23:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-24 08:43:30
+ * @LastEditTime: 2022-01-24 16:14:52
  * @Description: 
 -->
 <template>
@@ -83,6 +83,7 @@
     &--fixed {
       position: fixed;
       top: 0;
+      right: 0;
       // z-index: @multiple-tab-fixed-z-index;
       width: 100%;
     }
