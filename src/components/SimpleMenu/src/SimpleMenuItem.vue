@@ -2,14 +2,14 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 11:18:17
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-24 10:24:20
+ * @LastEditTime: 2022-01-25 10:30:05
  * @Description: 
 -->
 <template>
   <template v-if="!hasChildren">
     <a-menu-item :key="menuItem.id">{{ menuItem.name }}</a-menu-item>
   </template>
-  <a-sub-menu v-else>
+  <a-sub-menu :key="menuKey" v-else>
     <template #title>{{ menuItem.name }}</template>
     <SimpleMenuItem
       v-for="child in menuItem.children"

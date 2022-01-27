@@ -2,19 +2,14 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-20 10:10:15
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-24 17:27:21
+ * @LastEditTime: 2022-01-27 10:49:42
  * @Description: 
 -->
 <template>
-  <!-- <div :> -->
   <perfect-scrollbar :class="prefixCls">
-    <a-menu
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
-      mode="inline"
-      theme="dark"
-      @click="handleClick"
-    >
+    aaa333eeeaaa
+
+    <a-menu v-model:selectedKeys="activeKeys" mode="inline" theme="dark" @select="handleSelect">
       <SubMenu
         v-for="item in list"
         :menuItem="item"
@@ -23,41 +18,74 @@
       />
     </a-menu>
   </perfect-scrollbar>
-  <!-- </div> -->
 </template>
 <script lang="ts">
-  import { defineComponent, reactive, toRefs } from "vue";
+  import { defineComponent, reactive, toRefs, unref } from "vue";
+  import type { MenuState } from "@/components/SimpleMenu/types";
+  import type { MenuInfo } from "ant-design-vue/es/menu/src/interface";
   import { useDesign } from "@/hooks/web/useDesign";
   import SubMenu from "./SimpleMenuItem.vue";
   const list = [
-    { id: "home", name: "home", icon: "xxx", path: "/demo/index", children: [] },
+    { id: "id-home", name: "name-home", icon: "xxx", path: "/demo/index", children: [] },
     {
-      id: "table",
-      name: "table",
+      id: "id-table",
+      name: "name-table",
       icon: "yy",
       path: "/demo/table",
       children: [],
     },
-    { id: "home1", name: "home111", icon: "xxx", path: "/demo/index", children: [] },
+    {
+      id: "id-home22",
+      name: "name-home22",
+      icon: "xxx",
+      path: "/demo/index",
+      children: [
+        {
+          id: "id-home333",
+          name: "name-home333",
+          icon: "xxx",
+          path: "/demo/index",
+          children: [],
+        },
+      ],
+    },
+    {
+      id: "id-home444",
+      name: "name-home5555",
+      icon: "xxx",
+      path: "/demo/index11",
+      children: [
+        {
+          id: "id-home666",
+          name: "name-home777",
+          icon: "xxx",
+          path: "/demo/index",
+          children: [],
+        },
+      ],
+    },
   ];
   export default defineComponent({
     components: {
       SubMenu,
     },
     setup() {
-      const { prefixCls } = useDesign("simple-menu");
-      const state = reactive({
-        selectedKeys: [],
-        openKeys: [],
+      const menuState = reactive<MenuState>({
+        activeKeys: [],
+        activeSubMenuNames: [],
       });
-      const handleClick = (message: any) => {
-        console.log("click ", message);
+      const { prefixCls } = useDesign("simple-menu");
+
+      const handleSelect = (menuitem: MenuInfo) => {
+        menuState.activeKeys = [unref(String(menuitem.key))];
+        console.log("menuState.activeKeys 11122", menuState.activeKeys);
       };
+
       return {
-        ...toRefs(state),
+        ...toRefs(menuState),
         prefixCls,
         list,
-        handleClick,
+        handleSelect,
       };
     },
   });
