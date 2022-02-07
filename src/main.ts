@@ -2,11 +2,11 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 16:43:46
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-24 17:26:44
+ * @LastEditTime: 2022-01-29 17:25:32
  * @Description:
  */
 import "./design/index.less";
-import { createApp } from "vue";
+import { createApp, watch } from "vue";
 import App from "./App.vue";
 import Antd from "ant-design-vue/es";
 import { router } from "./router";
@@ -19,5 +19,6 @@ import "vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css";
 const app = createApp(App);
 
 setupStore(app);
+
 app.use(PerfectScrollbar).use(Antd).use(router);
 app.mount("#app");

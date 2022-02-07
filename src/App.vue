@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-15 14:28:03
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-27 10:45:56
+ * @LastEditTime: 2022-01-29 16:58:59
  * @Description: 
 -->
 <template>
@@ -18,6 +18,10 @@
   import { AppProvider } from "@/components/Application";
 </script>
 <style>
+  html,
+  body {
+    overflow-x: hidden;
+  }
   #app {
     height: 100%;
     font-family: Avenir, Helvetica, Arial, sans-serif;

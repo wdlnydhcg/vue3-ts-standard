@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-13 20:29:16
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-24 09:17:46
+ * @LastEditTime: 2022-01-27 16:07:18
  * @Description:
  */
 import type { AppRouteModule } from "@/router/types";
@@ -14,19 +14,9 @@ const demo: AppRouteModule = {
   redirect: "/demo/index",
   children: [
     {
-      path: "table",
-      name: "AboutPageDemo",
-      component: () => import("@/views/Demo/TableView.vue"),
-      meta: {
-        title: "主页",
-        icon: "simple-icons:about-dot-me",
-        hideMenu: true,
-      },
-    },
-    {
       path: "index",
       name: "homePageDemo",
-      component: () => import("@/views/Demo/HomeView.vue"),
+      component: () => import("@/views/Demo/index.vue"),
       meta: {
         title: "",
         icon: "simple-icons:about-dot-me",

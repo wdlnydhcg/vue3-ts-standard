@@ -2,25 +2,28 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 11:18:17
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-25 10:30:05
+ * @LastEditTime: 2022-01-27 15:51:07
  * @Description: 
 -->
 <template>
   <template v-if="!hasChildren">
-    <a-menu-item :key="menuItem.id">{{ menuItem.name }}</a-menu-item>
+    <Link :to="menuItem.path">
+      <a-menu-item :key="menuItem.path">{{ menuItem.name }}</a-menu-item>
+    </Link>
   </template>
   <a-sub-menu :key="menuKey" v-else>
     <template #title>{{ menuItem.name }}</template>
     <SimpleMenuItem
       v-for="child in menuItem.children"
       :menuItem="child"
-      :key="`${child.id}-simpleMenuItem`"
+      :key="`${child.path}-simpleMenuItem`"
     />
   </a-sub-menu>
 </template>
 <script lang="ts" setup>
   import { computed, PropType } from "vue";
   import type { MenuItemType } from "../types";
+  import Link from "./Link.vue";
   let props = defineProps({
     menuItem: {
       type: Object as PropType<MenuItemType>,

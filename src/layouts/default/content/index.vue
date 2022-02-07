@@ -2,24 +2,28 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:23:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-18 15:18:59
+ * @LastEditTime: 2022-01-28 10:27:56
  * @Description: 
 -->
 <template>
-  <div :class="[prefixCls]"> this is content index page </div>
+  <div :class="[prefixCls]">
+    <RouterView>
+      <template #default="{ Component, route }">
+        <transition name="fade-transform" mode="out-in" appear>
+          <keep-alive>
+            <Component :is="Component" :key="route.fullPath" />
+          </keep-alive>
+        </transition>
+      </template>
+    </RouterView>
+  </div>
+  <!-- <div > this is content index page </div> -->
 </template>
-<script lang="ts">
+<script setup lang="ts">
   import { defineComponent } from "vue";
   import { useDesign } from "@/hooks/web/useDesign";
-  export default defineComponent({
-    components: {},
-    setup() {
-      const { prefixCls } = useDesign("layout-content");
-      return {
-        prefixCls,
-      };
-    },
-  });
+
+  const { prefixCls } = useDesign("layout-content");
 </script>
 <style lang="less">
   @prefix-cls: ~"@{namespace}-layout-content";
@@ -38,5 +42,27 @@
       top: 200px;
       // z-index: @page-loading-z-index;
     }
+  }
+</style>
+<style lang="less" scoped>
+  /* fade-transform AppMain*/
+  .fade-transform-leave-active,
+  .fade-transform-enter-active {
+    transition: all 0.38s;
+  }
+
+  .fade-transform-enter-from {
+    opacity: 0;
+    // position: absolute;
+    transform: translateX(-30px);
+  }
+
+  .fade-transform-leave-to {
+    opacity: 0;
+    // position: absolute;
+    transform: translateX(30px);
+  }
+  .fade-transform-active {
+    position: absolute;
   }
 </style>

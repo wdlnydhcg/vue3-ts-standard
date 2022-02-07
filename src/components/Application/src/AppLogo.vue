@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:40:38
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-22 15:34:54
+ * @LastEditTime: 2022-01-28 17:14:34
  * @Description: 
 -->
 <template>
@@ -23,7 +23,6 @@
     },
   });
   const { prefixCls } = useDesign("app-logo");
-  console.log("getCollapsed ", getCollapsed);
   const getAppLogoClass = computed(() => [prefixCls, props.theme]);
   const getAppTitleClass = computed(() => [
     `${prefixCls}__title`,

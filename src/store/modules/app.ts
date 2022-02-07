@@ -2,13 +2,14 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 17:01:09
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-22 14:33:02
+ * @LastEditTime: 2022-01-29 16:15:00
  * @Description:
  */
 import { defineStore } from "pinia";
 import { store } from "@/store";
 import { deepMerge } from "@/utils";
 import type { MenuSetting, ProjectConfig } from "#/config";
+import { MenuItem } from "ant-design-vue";
 interface AppState {
   projectConfig: ProjectConfig | null;
 }
@@ -18,6 +19,7 @@ export const useAppStore = defineStore({
     projectConfig: {
       menuSetting: {
         collapsed: false,
+        menuList: [],
       },
     },
   }),
@@ -34,6 +36,7 @@ export const useAppStore = defineStore({
       this.projectConfig = deepMerge(this.projectConfig || {}, config);
       // Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig);
     },
+    setMenuList(menuList: []): void {},
   },
 });
 // Need to be used outside the setup
