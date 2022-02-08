@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 11:18:17
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-27 15:51:07
+ * @LastEditTime: 2022-02-08 10:34:40
  * @Description: 
 -->
 <template>
@@ -11,7 +11,7 @@
       <a-menu-item :key="menuItem.path">{{ menuItem.name }}</a-menu-item>
     </Link>
   </template>
-  <a-sub-menu :key="menuKey" v-else>
+  <a-sub-menu :key="`${menuKey}-submenu`" v-else>
     <template #title>{{ menuItem.name }}</template>
     <SimpleMenuItem
       v-for="child in menuItem.children"

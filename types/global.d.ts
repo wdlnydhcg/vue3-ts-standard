@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-21 11:14:54
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-21 17:22:27
+ * @LastEditTime: 2022-02-07 14:48:51
  * @Description:
  */
 export declare global {
@@ -10,4 +10,5 @@ export declare global {
   declare type DeepPartial<T> = {
     [P in keyof T]?: DeepPartial<T[P]>;
   };
+  declare type Nullable<T> = T | null;
 }

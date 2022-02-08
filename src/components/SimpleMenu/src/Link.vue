@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-27 15:14:00
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-28 17:15:13
+ * @LastEditTime: 2022-02-08 10:54:07
  * @Description: 
 -->
 <template>
@@ -25,6 +25,8 @@
     return isExternal(proxy.to);
   });
   const linkType = computed(() => {
+    console.log("isExternalValid.value  ", isExternalValid.value);
+
     if (isExternalValid.value) {
       return "a";
     }

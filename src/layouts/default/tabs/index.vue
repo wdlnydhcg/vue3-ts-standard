@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-18 15:44:59
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-29 11:02:46
+ * @LastEditTime: 2022-02-07 17:22:58
  * @Description: 
 -->
 <template>
@@ -48,6 +48,7 @@
   });
 
   const handleChange = (key: any) => {
+    console.log("tab handleChange ", key);
     tabStore.setActiveTab(resolve(key));
   };
 </script>

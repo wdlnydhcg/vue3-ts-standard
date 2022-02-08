@@ -2,22 +2,21 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-16 20:23:41
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-28 10:27:56
+ * @LastEditTime: 2022-02-08 11:01:50
  * @Description: 
 -->
 <template>
   <div :class="[prefixCls]">
-    <RouterView>
-      <template #default="{ Component, route }">
-        <transition name="fade-transform" mode="out-in" appear>
-          <keep-alive>
-            <Component :is="Component" :key="route.fullPath" />
-          </keep-alive>
-        </transition>
-      </template>
+    <RouterView v-slot="{ Component, route }">
+      <!-- <template #default="{ Component, route }"> -->
+      <!-- <transition name="fade-transform" mode="out-in" appear> -->
+      <keep-alive>
+        <component :is="Component" :key="route.path" />
+      </keep-alive>
+      <!-- </transition> -->
+      <!-- </template> -->
     </RouterView>
   </div>
-  <!-- <div > this is content index page </div> -->
 </template>
 <script setup lang="ts">
   import { defineComponent } from "vue";
@@ -25,7 +24,8 @@
 
   const { prefixCls } = useDesign("layout-content");
 </script>
-<style lang="less">
+
+<style lang="less" scoped>
   @prefix-cls: ~"@{namespace}-layout-content";
   .@{prefix-cls} {
     position: relative;
@@ -43,8 +43,6 @@
       // z-index: @page-loading-z-index;
     }
   }
-</style>
-<style lang="less" scoped>
   /* fade-transform AppMain*/
   .fade-transform-leave-active,
   .fade-transform-enter-active {

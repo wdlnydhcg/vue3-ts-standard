@@ -2,14 +2,10 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-15 14:28:03
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-29 16:58:59
+ * @LastEditTime: 2022-02-07 17:13:12
  * @Description: 
 -->
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link>|
-    <router-link to="/about">About</router-link>
-  </nav> -->
   <AppProvider>
     <RouterView />
   </AppProvider>

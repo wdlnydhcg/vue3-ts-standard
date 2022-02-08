@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-28 15:55:08
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-29 17:24:39
+ * @LastEditTime: 2022-02-08 11:17:49
  * @Description:
  */
 import { defineStore } from "pinia";
@@ -38,11 +38,15 @@ export const useMultipleTabStore = defineStore({
       if (this.getTabList.filter((item) => item.path === route.path).length === 0) {
         this.tabList.push(route);
       }
-      this.setActiveTab(route);
+      this.activeTab = route;
     },
     setActiveTab(route: RouteLocationNormalized) {
+      console.log("route", route);
+
       this.activeTab = route;
-      router.push(route.path);
+
+      // console.log("setActiveTab", route.path);
+      // router.push(route.path);
     },
   },
 });

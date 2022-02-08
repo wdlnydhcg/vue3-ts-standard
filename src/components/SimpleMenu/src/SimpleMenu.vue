@@ -2,7 +2,7 @@
  * @Author: MrAlenZhong
  * @Date: 2022-01-20 10:10:15
  * @LastEditors: MrAlenZhong
- * @LastEditTime: 2022-01-29 15:03:52
+ * @LastEditTime: 2022-02-08 11:16:38
  * @Description: 
 -->
 <template>
@@ -11,14 +11,23 @@
       <SubMenu
         v-for="item in list"
         :menuItem="item"
-        :key="`${item.path}-submenu`"
+        :key="`${item.path}-submenu-item`"
         :menuKey="item.path"
       />
     </a-menu>
   </perfect-scrollbar>
 </template>
 <script lang="ts">
-  import { defineComponent, reactive, toRefs, unref, watch, getCurrentInstance } from "vue";
+  import {
+    defineComponent,
+    reactive,
+    toRefs,
+    unref,
+    watch,
+    computed,
+    getCurrentInstance,
+    watchEffect,
+  } from "vue";
   import { useRouter } from "vue-router";
   import type { MenuState } from "@/components/SimpleMenu/types";
   import type { MenuInfo } from "ant-design-vue/es/menu/src/interface";
@@ -27,7 +36,7 @@
   import { useOpenKeys } from "./useOpenKeys";
   import { listenRouter } from "@/hooks/web/usePage";
   import { useMultipleTabStore } from "@/store/modules/multipleTab";
-
+  import { router } from "@/router";
   const list = [
     { id: "id-home", name: "name-home", icon: "xxx", path: "/demo/index", children: [] },
     {
@@ -35,6 +44,27 @@
       name: "name-table",
       icon: "yy",
       path: "/dashboard/index",
+      children: [],
+    },
+    {
+      id: "id-table2",
+      name: "name-table2",
+      icon: "xx",
+      path: "/demo/index2",
+      children: [],
+    },
+    {
+      id: "id-table3",
+      name: "name-table3",
+      icon: "xx",
+      path: "/demo/index3",
+      children: [],
+    },
+    {
+      id: "id-table4",
+      name: "name-table4",
+      icon: "xx",
+      path: "/demo/index4",
       children: [],
     },
   ];
@@ -53,15 +83,21 @@
         activeSubMenuNames: [],
       });
       const { proxy }: any = getCurrentInstance();
+      // computed(() => {
+      //   const { path } = proxy.$route;
+      //   const { activeKeys } = menuState;
+      //   console.log("activeKeys[0] ", activeKeys[0]);
+      //   console.log("path", path);
 
-      watch(
-        () => proxy.$route,
-        (value) => {
-          menuState.activeKeys = [value.path];
-          console.log("watch ", value);
-        },
-        { immediate: true }
-      );
+      //   if (path !== activeKeys[0]) {
+      //     menuState.activeKeys = [path];
+      //   }
+      //   router.push(proxy.$route.path);
+      // });
+      watchEffect(() => {
+        menuState.activeKeys = [proxy.$route.path];
+        // router.push(proxy.$route.path);
+      });
       const { prefixCls } = useDesign("simple-menu");
       const handleSelect = (menuitem: any) => {
         tabStore.addTab(resolve(menuitem.key));
